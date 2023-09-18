@@ -1,7 +1,6 @@
 
 import React from 'react';
-import './TrackList.css';
-
+import './TrackList.css'
 
 
 function TrackList(){
