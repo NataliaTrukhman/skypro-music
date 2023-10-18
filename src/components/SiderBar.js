@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from "react";
-import Skeleton from "react-loading-skeleton";
+
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css'
 import './SiderBar.css'
 
@@ -34,16 +35,27 @@ function SiderBarPersonal(){
     function SiderBarLists(){
       const [isLoading, setIsLoading] = useState(true);
       useEffect(() => {
-       setTimeout(() => {
+       const timer = setTimeout(() => {
          setIsLoading(false)
-       }, 5000);
+       }, 3000);
+       return ()=>clearTimeout(timer);
      }, []);
-     const test='LOADING...'
+    //  const test='LOADING...'
        return (
         <div className="sidebar__list">
-          {isLoading ?  (<Skeleton className="sidebar__item"/>) : (<Playlist number="./img/playlist01.png"/>)}
-          {isLoading ?  (<Skeleton className="sidebar__item"/>) : (<Playlist number="./img/playlist02.png"/>)}
-          {isLoading ?  (<Skeleton className="sidebar__item"/>) : (<Playlist number="./img/playlist03.png"/>)}
+          {isLoading ?  (
+          <SkeletonTheme baseColor="#202020" highlightColor="#444">
+             <Skeleton className="sidebar__item"/>
+            </SkeletonTheme>) : (<Playlist number="./img/playlist01.png"/>)}
+            
+            {isLoading ?  (
+          <SkeletonTheme baseColor="#202020" highlightColor="#444">
+             <Skeleton className="sidebar__item"/>
+            </SkeletonTheme>) : (<Playlist number="./img/playlist02.png"/>)}
+            {isLoading ?  (
+          <SkeletonTheme baseColor="#202020" highlightColor="#444">
+             <Skeleton className="sidebar__item"/>
+            </SkeletonTheme>) : (<Playlist number="./img/playlist03.png"/>)}
          
           </div>
         

@@ -1,9 +1,19 @@
+import React, { useEffect, useState } from "react";
 
-import React from 'react';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css'
+import './SiderBar.css'
 import './TrackList.css'
 
 
 function TrackList(){
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+   const timer = setTimeout(() => {
+     setIsLoading(false)
+   }, 3000);
+   return ()=>clearTimeout(timer);
+ }, []);
     return (
   <div className="main__centerblock centerblock">
       <div className="centerblock__search search">
@@ -97,6 +107,24 @@ function TrackList(){
           </div>
           <Track />
           <Track />
+          {isLoading ?  (
+            <SkeletonTheme baseColor="#202020" highlightColor="#444">
+          <div className="playlist__item">
+            <div className="playlist__track track">
+              
+              <Skeleton className="track__title-image"/>
+              <Skeleton className="track__title-text"/>
+            
+              <Skeleton className="track__author"/>
+              <Skeleton className="track__album"/>
+            
+              <Skeleton className="track__time-svg"/>
+              <Skeleton className="track__time-text"/>
+             </div>
+            </div>
+            </SkeletonTheme>
+              ) : (
+                 <Track />)}
 
         </div>
       </div>
