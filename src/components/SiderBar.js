@@ -1,11 +1,19 @@
-import React from 'react';
+
+import React, { useEffect, useState } from "react";
+import Skeleton from "react-loading-skeleton";
+import 'react-loading-skeleton/dist/skeleton.css'
 import './SiderBar.css'
 
 function SiderBar(props){
+
+//  const test='LOADING...'
+
     return(
         <div className="main__sidebar sidebar">
        <SiderBarPersonal/>
-       <SiderBarLists/>
+       <div className="sidebar__block">
+      <SiderBarLists/>
+       </div>
       </div>
     );
 }
@@ -24,48 +32,31 @@ function SiderBarPersonal(){
     )}
 
     function SiderBarLists(){
-        return (
-            <div className="sidebar__block">
-            <div className="sidebar__list">
-              <div className="sidebar__item">
-                <a className="sidebar__link" href="#">
-                  <img
-                    className="sidebar__img"
-                    src="img/playlist01.png"
-                    alt="day's playlist"
-                  />
-                </a>
-              </div>
-              <div className="sidebar__item">
-                <a className="sidebar__link" href="#">
-                  <img
-                    className="sidebar__img"
-                    src="img/playlist02.png"
-                    alt="day's playlist"
-                  />
-                </a>
-              </div>
-              <div className="sidebar__item">
-                <a className="sidebar__link" href="#">
-                  <img
-                    className="sidebar__img"
-                    src="img/playlist03.png"
-                    alt="day's playlist"
-                  />
-                </a>
-              </div>
-            </div>
+      const [isLoading, setIsLoading] = useState(true);
+      useEffect(() => {
+       setTimeout(() => {
+         setIsLoading(false)
+       }, 5000);
+     }, []);
+     const test='LOADING...'
+       return (
+        <div className="sidebar__list">
+          {isLoading ?  (<Skeleton className="sidebar__item"/>) : (<Playlist number="./img/playlist01.png"/>)}
+          {isLoading ?  (<Skeleton className="sidebar__item"/>) : (<Playlist number="./img/playlist02.png"/>)}
+          {isLoading ?  (<Skeleton className="sidebar__item"/>) : (<Playlist number="./img/playlist03.png"/>)}
+         
           </div>
+        
         )
     }
 
-    function Playlist(){
+    function Playlist({number}){
       return(
         <div className="sidebar__item">
         <a className="sidebar__link" href="#">
           <img
             className="sidebar__img"
-            src="img/playlist01.png"
+            src={number}
             alt="day's playlist"
           />
         </a>
