@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
+
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css'
 import './BarAudioPlayer.css';
 
 
 
 
   function BarAudioPlayer() {
+
+    const [isLoading, setIsLoading] = useState(true);
+    useEffect(() => {
+     const timer = setTimeout(() => {
+       setIsLoading(false)
+     }, 3000);
+     return ()=>clearTimeout(timer);
+   }, []);
       return (
     <div className="bar">
             <div className="bar__content">
@@ -39,7 +50,15 @@ import './BarAudioPlayer.css';
                     </div>
                   </div>
                   <div className="player__track-play track-play">
-                     <BarContainLoad/>
+
+                  {isLoading ?  (
+          <SkeletonTheme  baseColor="#202020" highlightColor="#444">
+             <Skeleton className="track-play__image"/>
+             <Skeleton className="track-play__author"/>
+             <Skeleton className="track-play__album"/>
+            </SkeletonTheme>
+            ) : (<BarContainLoad/>)}
+                     
                      <div className="track-play__like-dis">
                         <div className="track-play__like _btn-icon">
                           <svg className="track-play__like-svg" alt="like">

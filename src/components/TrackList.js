@@ -109,19 +109,30 @@ function TrackList(){
           <Track />
           {isLoading ?  (
             <SkeletonTheme baseColor="#202020" highlightColor="#444">
-          <div className="playlist__item">
+           <div className="playlist__item">
             <div className="playlist__track track">
-              
-              <Skeleton className="track__title-image"/>
-              <Skeleton className="track__title-text"/>
-            
-              <Skeleton className="track__author"/>
-              <Skeleton className="track__album"/>
-            
-              <Skeleton className="track__time-svg"/>
-              <Skeleton className="track__time-text"/>
-             </div>
+            <div className="track__title">
+              <Skeleton className="track__title-image"   />
+              <Skeleton className="track__title-svg"  />
+              </div>
+              <div className="track__title-text">
+              <Skeleton className="track__title-link"/>
+              <Skeleton className="track__title-span"/>
+               </div>
+               
+               <div className="track__author">
+              <Skeleton className="track__author-link"/>
+              </div>
+              <div className="track__album">
+              <Skeleton className="track__album-link"/>
             </div>
+            <div className="track__time">
+              <Skeleton className="track__time-svg" />
+              <Skeleton className="track__time-text"/>
+              </div>
+             </div>
+             </div>
+            
             </SkeletonTheme>
               ) : (
                  <Track />)}
