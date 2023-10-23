@@ -113,11 +113,11 @@ function TrackList(){
             <div className="playlist__track track">
     
               <Skeleton className="track__title-image"   />
-              <Skeleton className="track__title-image" width={300}   />
-              <Skeleton className="track__title-image"  width={200} />
-              <Skeleton className="track__title-image"  width={200} />
-              <Skeleton className="track__title-image"  width={50} />
-              <Skeleton className="track__title-image"  width={50} />
+              <Skeleton className="track__title-image" width={300} height={10}  />
+              <Skeleton className="track__title-image"  width={200} height={10} />
+              <Skeleton className="track__title-image"  width={200} height={10}  />
+              <Skeleton className="track__title-image"  width={50} height={10}  />
+            
           
              
          
