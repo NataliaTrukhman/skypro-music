@@ -6,16 +6,16 @@ import './SiderBar.css'
 import './TrackList.css'
 
 
-function TrackList(){
+function TrackList() {
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-   const timer = setTimeout(() => {
-     setIsLoading(false)
-   }, 3000);
-   return ()=>clearTimeout(timer);
- }, []);
-    return (
-  <div className="main__centerblock centerblock">
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
+  return (
+    <div className="main__centerblock centerblock">
       <div className="centerblock__search search">
         <svg className="search__svg">
           <use xlinkHref="./img/icon/sprite.svg#icon-search"></use>
@@ -30,7 +30,7 @@ function TrackList(){
       <h2 className="centerblock__h2">Треки</h2>
       <div className="centerblock__filter filter">
         <div className="filter__title">Искать по:</div>
-       <FilterBlocks/>
+        <FilterBlocks />
       </div>
       <div className="centerblock__content">
         <div className="content__title playlist-title">
@@ -44,156 +44,99 @@ function TrackList(){
           </div>
         </div>
         <div className="content__playlist playlist">
-          <div className="playlist__item">
-            <div className="playlist__track track">
-              <div className="track__title">
-                <div className="track__title-image">
-                  <svg className="track__title-svg" alt="music">
-                    <use xlinkHref="./img/icon/sprite.svg#icon-note"></use>
-                  </svg>
-                </div>
-                <div className="track__title-text">
-                  <a className="track__title-link" href="#"
-                    >Guilt <span className="track__title-span"></span
-                  ></a>
-                </div>
-              </div>
-              <div className="track__author">
-                <a className="track__author-link" href="#">Nero</a>
-              </div>
-              <div className="track__album">
-                <a className="track__album-link" href="#"
-                  >Welcome Reality</a
-                >
-              </div>
-              <div className="track__time">
-                <svg className="track__time-svg" alt="time">
-                  <use xlinkHref="./img/icon/sprite.svg#icon-like"></use>
-                </svg>
-                <span className="track__time-text">4:44</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="playlist__item">
-            <div className="playlist__track track">
-              <div className="track__title">
-                <div className="track__title-image">
-                  <svg className="track__title-svg" alt="music">
-                    <use xlinkHref="./img/icon/sprite.svg#icon-note"></use>
-                  </svg>
-                </div>
-                <div className="track__title-text">
-                  <a className="track__title-link" href="#"
-                    >Elektro <span className="track__title-span"></span
-                  ></a>
-                </div>
-              </div>
-              <div className="track__author">
-                <a className="track__author-link" href="#"
-                  >Dynoro, Outwork, Mr. Gee</a
-                >
-              </div>
-              <div className="track__album">
-                <a className="track__album-link" href="#">Elektro</a>
-              </div>
-              <div className="track__time">
-                <svg className="track__time-svg" alt="time">
-                  <use xlinkHref="./img/icon/sprite.svg#icon-like"></use>
-                </svg>
-                <span className="track__time-text">2:22</span>
-              </div>
-            </div>
-          </div>
-          <Track />
-          <Track />
-          {isLoading ?  (
-            <SkeletonTheme baseColor="#202020" highlightColor="#444">
-           <div className="playlist__item">
-            <div className="playlist__track track">
-    
-              <Skeleton className="track__title-image"   />
-              <Skeleton className="track__title-image" width={300} height={10}  />
-              <Skeleton className="track__title-image"  width={200} height={10} />
-              <Skeleton className="track__title-image"  width={200} height={10}  />
-              <Skeleton className="track__title-image"  width={50} height={10}  />
-            
+          <Track isLoading={isLoading} name={"Guilt"} />
+          <Track isLoading={isLoading} name={"Knives n Cherries"} />
+          <Track isLoading={isLoading} name={"Knives n Cherries"} />
+          <Track isLoading={isLoading} name={"Knives n Cherries"} />
           
-             
-         
-           
-         
-             </div>
-             </div>
-            
+          {isLoading ? (
+            <SkeletonTheme baseColor="#202020" highlightColor="#444">
+              <div className="playlist__item">
+                <div className="playlist__track track">
+                  <Skeleton className="track__title-image" />
+                  <Skeleton className="track__title-image" width={370} height={10} />
+                  <Skeleton className="track__title-image" width={310} height={10} />
+                  <Skeleton className="track__title-image" width={235} height={10} />
+                  <Skeleton className="track__title-image" width={50} height={10} />
+                </div>
+              </div>
             </SkeletonTheme>
-              ) : (
-                 <Track />)}
-
+          ) : (
+            <Track name={"Knives n Cherries"} />)}
         </div>
       </div>
-  </div>
-    )
+    </div>
+  )
 }
 
 export default TrackList;
 
 
-function FilterBlocks(){
+function FilterBlocks() {
   return (
     <>
-     <div className="filter__button button-author _btn-text">
-          исполнителю
-        </div>
-        <div className="filter__button button-year _btn-text">
-          году выпуска
-        </div>
-        <div className="filter__button button-genre _btn-text">жанру</div></>
+      <div className="filter__button button-author _btn-text">
+        исполнителю
+      </div>
+      <div className="filter__button button-year _btn-text">
+        году выпуска
+      </div>
+      <div className="filter__button button-genre _btn-text">жанру</div></>
   )
 }
 
 
 
-function Track() {
+function Track({ isLoading, name }) {
   return (
-    <div className="playlist__item">
-    <div className="playlist__track track">
-      <div className="track__title">
-        <div className="track__title-image">
-          <svg className="track__title-svg" alt="music">
-            <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
-          </svg>
+    <SkeletonTheme baseColor="#202020" highlightColor="#444">
+      <div className="playlist__item">
+        <div className="playlist__track track">
+          <div className="track__title">
+            <div className="track__title-image">
+              {isLoading ? (<Skeleton width={51} height={51} />
+              ) : (<svg className="track__title-svg" alt="music">
+                <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
+              </svg>
+              )}
+            </div>
+            <div className="track__title-text">
+              {isLoading ? (<Skeleton width={375} height={30} />
+              ) : (<a className="track__title-link" href="#"
+              >{name}
+                <span className="track__title-span"></span>
+              </a>
+              )}
+            </div>
+          </div>
+          <div className="track__author">
+            {isLoading ? (<Skeleton width={316} height={30} />
+            ) : (<a className="track__author-link" href="#">minthaze</a>
+            )}
+          </div>
+          <div className="track__album">
+            {isLoading ? (<Skeleton width={316} height={30} />
+            ) : (<a className="track__album-link" href="#"
+            >Captivating</a>
+            )}
+
+          </div>
+          <div className="track__time">
+            <svg className="track__time-svg" alt="time">
+              <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
+            </svg>
+            <span className="track__time-text">1:48</span>
+          </div>
         </div>
-        <div className="track__title-text">
-          <a className="track__title-link" href="#"
-            >Knives n Cherries
-            <span className="track__title-span"></span
-          ></a>
-        </div>
       </div>
-      <div className="track__author">
-        <a className="track__author-link" href="#">minthaze</a>
-      </div>
-      <div className="track__album">
-        <a className="track__album-link" href="#"
-          >Captivating</a
-        >
-      </div>
-      <div className="track__time">
-        <svg className="track__time-svg" alt="time">
-          <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
-        </svg>
-        <span className="track__time-text">1:48</span>
-      </div>
-    </div>
-  </div>
+    </SkeletonTheme>
   )
 }
 
 
 
-{/* ошибка не читает свойство text */}
-    {/* <Track tracks = {{
+{/* ошибка не читает свойство text */ }
+{/* <Track tracks = {{
             text: 'Knives n Cherries',
             author: 'minthaze',
             album: 'Captivating',
