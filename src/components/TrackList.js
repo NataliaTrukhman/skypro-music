@@ -4,7 +4,7 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css'
 import './SiderBar.css'
 import './TrackList.css'
-
+import FilterBlocks from "./FilterBlocks";
 
 function TrackList() {
   const [isLoading, setIsLoading] = useState(true);
@@ -32,6 +32,7 @@ function TrackList() {
         <div className="filter__title">Искать по:</div>
         <FilterBlocks />
       </div>
+
       <div className="centerblock__content">
         <div className="content__title playlist-title">
           <div className="playlist-title__col col01">Трек</div>
@@ -70,20 +71,6 @@ function TrackList() {
 }
 
 export default TrackList;
-
-
-function FilterBlocks() {
-  return (
-    <>
-      <div className="filter__button button-author _btn-text">
-        исполнителю
-      </div>
-      <div className="filter__button button-year _btn-text">
-        году выпуска
-      </div>
-      <div className="filter__button button-genre _btn-text">жанру</div></>
-  )
-}
 
 
 
