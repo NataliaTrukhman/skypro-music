@@ -60,8 +60,8 @@ function FilterBlocks() {
           
             {showFilter && <ListItems items={years} />}
 
-            <div className="filter__button button-genre _btn-text">жанру</div>
-            {showFilter && <ListItems items={genres} />}
+            <div className="filter__button button-genre _btn-text" >жанру</div>
+            {showFilter && <ListItems   items={genres} />}
             
         </>
     )
@@ -73,11 +73,11 @@ export default FilterBlocks;
 function ListItems({ items }) {
     const List = items.map(i => <li className="line _btn-text" key={i.id}>{i.name}</li>)
     return (
-        <div>
-            <ul className="popup" >
+      
+            <ul className="popup " >
                 {List}
             </ul>
-        </div>
+       
 
     )
 
