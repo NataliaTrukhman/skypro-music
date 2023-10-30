@@ -42,26 +42,27 @@ const genres = [
 ]
 
 function FilterBlocks() {
-    const [showFilter, setshowFilter] = useState(false);
-    function showClick() {
-        setshowFilter(!showFilter)
-    }
+    const [showFilter, setshowFilter] = useState(null);
+    // function showClick() {
+    //     setshowFilter(showFilter)
+    // }
 
     return (
         <>
-            <div className="filter__button button-author _btn-text" onClick={showClick}>
+            <div className="filter__button button-author _btn-text" onClick={()=> setshowFilter("authors")}>
                 исполнителю
             </div>
-            {showFilter && <ListItems items={authors} />}
+            {showFilter === "authors" ? <ListItems items={authors}  /> : null }
+            {/* {showFilter && <ListItems items={authors} />} */}
 
-            <div className="filter__button button-year _btn-text" onClick={showClick}>
+            <div className="filter__button button-year _btn-text" onClick={()=> setshowFilter("years")}>
                 году выпуска
             </div>
-          
-            {showFilter && <ListItems items={years} />}
+            {showFilter === "years" ? <ListItems items={years}  /> : null }
+            {/* {showFilter && <ListItems items={years} />} */}
 
-            <div className="filter__button button-genre _btn-text" >жанру</div>
-            {showFilter && <ListItems   items={genres} />}
+            <div className="filter__button button-genre _btn-text" onClick={()=> setshowFilter("genres")} >жанру</div>
+            {showFilter === "genres" ? <ListItems items={genres}  /> : null }
             
         </>
     )
