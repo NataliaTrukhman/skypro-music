@@ -135,11 +135,18 @@
     margin-right: 10px;
   }
 
+
+  .popupblock{
+    position: relative; 
+    right: 110px;
+    top: 30px;
+   
+  }
   .popup {
-    width: 200px;
-    position: relative;
-    top: 100px;
-    right: 150px;
+    position: absolute; 
+    width: 250px;
+    height: 100px;
+    overflow-y: scroll;
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -149,7 +156,7 @@
     
     
     }
- 
+
 .line:hover{
   text-decoration: underline;
 }

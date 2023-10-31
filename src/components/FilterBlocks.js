@@ -42,26 +42,37 @@ const genres = [
 ]
 
 function FilterBlocks() {
-    const [showFilter, setshowFilter] = useState(null);
+    const [showFilter, setShowFilter] = useState(null);
     // function showClick() {
-    //     setshowFilter(showFilter)
+    //     setShowFilter(showFilter)
     // }
+
+    function showClick(filter){ 
+        if (showFilter === filter) { 
+          setShowFilter(null)
+       } else {
+          setShowFilter(filter)
+       }
+     } 
+ 
+
 
     return (
         <>
-            <div className="filter__button button-author _btn-text" onClick={()=> setshowFilter("authors")}>
+            <div className="filter__button button-author _btn-text" onClick={showClick("authors" )}>
                 исполнителю
             </div>
+           
             {showFilter === "authors" ? <ListItems items={authors}  /> : null }
             {/* {showFilter && <ListItems items={authors} />} */}
-
-            <div className="filter__button button-year _btn-text" onClick={()=> setshowFilter("years")}>
+          
+            <div className="filter__button button-year _btn-text" onClick={()=> setShowFilter("years")}>
                 году выпуска
             </div>
             {showFilter === "years" ? <ListItems items={years}  /> : null }
             {/* {showFilter && <ListItems items={years} />} */}
 
-            <div className="filter__button button-genre _btn-text" onClick={()=> setshowFilter("genres")} >жанру</div>
+            <div className="filter__button button-genre _btn-text" onClick={()=> setShowFilter("genres")} >жанру</div>
             {showFilter === "genres" ? <ListItems items={genres}  /> : null }
             
         </>
@@ -74,11 +85,11 @@ export default FilterBlocks;
 function ListItems({ items }) {
     const List = items.map(i => <li className="line _btn-text" key={i.id}>{i.name}</li>)
     return (
-      
+      <div className="popupblock" >
             <ul className="popup " >
                 {List}
             </ul>
-       
+            </div>
 
     )
 
