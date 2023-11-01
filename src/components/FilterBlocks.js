@@ -59,20 +59,20 @@ function FilterBlocks() {
 
     return (
         <>
-            <div className="filter__button button-author _btn-text" onClick={showClick("authors" )}>
+            <div className="filter__button button-author _btn-text" onClick={() => showClick("authors")}>
                 исполнителю
             </div>
            
             {showFilter === "authors" ? <ListItems items={authors}  /> : null }
             {/* {showFilter && <ListItems items={authors} />} */}
           
-            <div className="filter__button button-year _btn-text" onClick={()=> setShowFilter("years")}>
+            <div className="filter__button button-year _btn-text" onClick={() => showClick("years")}>
                 году выпуска
             </div>
             {showFilter === "years" ? <ListItems items={years}  /> : null }
             {/* {showFilter && <ListItems items={years} />} */}
 
-            <div className="filter__button button-genre _btn-text" onClick={()=> setShowFilter("genres")} >жанру</div>
+            <div className="filter__button button-genre _btn-text" onClick={() => showClick("genres")} >жанру</div>
             {showFilter === "genres" ? <ListItems items={genres}  /> : null }
             
         </>
