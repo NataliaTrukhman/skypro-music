@@ -25,6 +25,10 @@ const years = [
     }, {
         id: 2,
         name: 2005,
+    },
+    {
+        id: 3,
+        name: 2007,
     }
 ]
 
@@ -86,10 +90,13 @@ function ListItems({ items }) {
     const List = items.map(i => <li className="line _btn-text" key={i.id}>{i.name}</li>)
     return (
       <div className="popupblock" >
-            <ul className="popup " >
+     
+        <ul className="popup " >
                 {List}
             </ul>
-            </div>
+      
+            
+       </div>
 
     )
 

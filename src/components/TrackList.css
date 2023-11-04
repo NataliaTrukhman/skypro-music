@@ -144,8 +144,8 @@
   }
   .popup {
     position: absolute; 
-    width: 250px;
-    height: 100px;
+    width: 150px;
+    max-height: 100px;
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
@@ -156,6 +156,19 @@
     
     
     }
+
+    .popup::-webkit-scrollbar {
+      width: 10px; 
+      background-color: #514e4e;
+  }
+
+
+
+  .popup::-webkit-scrollbar-thumb {
+    background-color: #eeeaec;
+    border-radius: 10px;
+  
+}
 
 .line:hover{
   text-decoration: underline;
