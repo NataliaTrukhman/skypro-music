@@ -12,6 +12,10 @@ const authors = [
     }, {
         id: 2,
         name: 'Nirvana',
+    },
+    {
+        id: 3,
+        name: 'Ray Charles',
     }
 ]
 
@@ -42,6 +46,10 @@ const genres = [
     }, {
         id: 2,
         name: 'классика',
+    },
+    {
+        id: 3,
+        name: 'джаз',
     }
 ]
 
@@ -51,30 +59,42 @@ function FilterBlocks() {
     //     setShowFilter(showFilter)
     // }
 
+    const [showActive, setShowActive] = useState(false);
+    
+  
+    // let className 
+
     function showClick(filter){ 
-        if (showFilter === filter) { 
+        
+        if (showFilter === filter && showActive === false) { 
           setShowFilter(null)
+      
+         
+          
        } else {
           setShowFilter(filter)
-       }
+          setShowActive(!showActive)
+          
+          }
+        
      } 
  
 
 
     return (
         <>
-            <div className="filter__button button-author _btn-text" onClick={() => showClick("authors")}>
+            <div className={`filter__button button-year _btn-text ${showActive ? 'active' : '' }`} onClick={() => showClick("authors")}>
                 исполнителю
             </div>
            
-            {showFilter === "authors" ? <ListItems items={authors}  /> : null }
-            {/* {showFilter && <ListItems items={authors} />} */}
+            {showFilter === "authors" ? <ListItems items={authors} /> : null }
+      
           
-            <div className="filter__button button-year _btn-text" onClick={() => showClick("years")}>
+            <div className={`filter__button button-year _btn-text ${showActive ? 'active' : '' }`} onClick={() => showClick("years")}>
                 году выпуска
             </div>
             {showFilter === "years" ? <ListItems items={years}  /> : null }
-            {/* {showFilter && <ListItems items={years} />} */}
+            
 
             <div className="filter__button button-genre _btn-text" onClick={() => showClick("genres")} >жанру</div>
             {showFilter === "genres" ? <ListItems items={genres}  /> : null }
@@ -90,10 +110,12 @@ function ListItems({ items }) {
     const List = items.map(i => <li className="line _btn-text" key={i.id}>{i.name}</li>)
     return (
       <div className="popupblock" >
-     
-        <ul className="popup " >
+    <div className="popupcontainer " >
+    <ul className="popup " >
                 {List}
             </ul>
+    </div>
+       
       
             
        </div>
