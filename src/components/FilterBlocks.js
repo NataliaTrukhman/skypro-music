@@ -59,23 +59,21 @@ function FilterBlocks() {
     //     setShowFilter(showFilter)
     // }
 
-    const [showActive, setShowActive] = useState(false);
+    
     
   
     // let className 
 
     function showClick(filter){ 
         
-        if (showFilter === filter && showActive === false) { 
+        if (showFilter === filter) { 
           setShowFilter(null)
       
          
           
        } else {
           setShowFilter(filter)
-          setShowActive(!showActive)
-          
-          }
+       }
         
      } 
  
@@ -83,20 +81,20 @@ function FilterBlocks() {
 
     return (
         <>
-            <div className={`filter__button button-year _btn-text ${showActive ? 'active' : '' }`} onClick={() => showClick("authors")}>
+            <div className={`filter__button button-year _btn-text ${showFilter === "authors"  ? 'active' : '' }`} onClick={() => showClick("authors")}>
                 исполнителю
             </div>
            
             {showFilter === "authors" ? <ListItems items={authors} /> : null }
       
           
-            <div className={`filter__button button-year _btn-text ${showActive ? 'active' : '' }`} onClick={() => showClick("years")}>
+            <div className={`filter__button button-year _btn-text ${showFilter === "years" ? 'active' : '' }`} onClick={() => showClick("years")}>
                 году выпуска
             </div>
             {showFilter === "years" ? <ListItems items={years}  /> : null }
             
 
-            <div className="filter__button button-genre _btn-text" onClick={() => showClick("genres")} >жанру</div>
+            <div className={`filter__button button-year _btn-text ${showFilter === "genres"  ? 'active' : '' }`} onClick={() => showClick("genres")} >жанру</div>
             {showFilter === "genres" ? <ListItems items={genres}  /> : null }
             
         </>
