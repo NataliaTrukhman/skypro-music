@@ -55,14 +55,7 @@ const genres = [
 
 function FilterBlocks() {
     const [showFilter, setShowFilter] = useState(null);
-    // function showClick() {
-    //     setShowFilter(showFilter)
-    // }
 
-    
-    
-  
-    // let className 
 
     function showClick(filter){ 
         
