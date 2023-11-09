@@ -128,12 +128,58 @@
     border: 1px solid #ffffff;
     border-radius: 60px;
     padding: 6px 20px;
+
   }
   
   .filter__button:not(:last-child) {
     margin-right: 10px;
   }
+
+
+  .popupblock{
+    position: relative; 
+    right: 110px;
+    top: 40px;
+   
+  }
+  .popupcontainer{
+    width: 150px;
+    position: absolute; 
+    background-color: #353333;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  .popup {
+    max-height: 100px;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 5px;
+   
+    }
+    .active {
+      border-color: #ad61ff;
+      color: #ad61ff;
+    }
+
+    .popup::-webkit-scrollbar {
+      width: 8px; 
+      background-color: #514e4e;
+  }
+
+
+
+  .popup::-webkit-scrollbar-thumb {
+    background-color: #eeeaec;
+    border-radius: 10px;
   
+}
+
+.line:hover{
+  text-decoration: underline;
+}
+
   .content__title {
     display: -webkit-box;
     display: -ms-flexbox;
