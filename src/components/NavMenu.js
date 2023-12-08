@@ -3,7 +3,7 @@ import { useState } from 'react';
 import './NavMenu.css'
 
 
-function NavMenu(props){
+const NavMenu = (props) =>{
   const [menuBurger,setMenuBurger]= useState(false);
   function menuBurgerClick(){
     setMenuBurger(!menuBurger)
@@ -46,4 +46,4 @@ function MenuBurger(){
         </ul>
       </div>
     )
-}
+};

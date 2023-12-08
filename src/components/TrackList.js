@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css'
-import './SiderBar.css'
 import './TrackList.css'
-import FilterBlocks from "./FilterBlocks";
+import FilterBlocks from "./TrackListFilterBlocks";
+
+//центр
 
 function TrackList() {
   const [isLoading, setIsLoading] = useState(true);
@@ -122,46 +122,3 @@ function Track({ isLoading, name }) {
 
 
 
-{/* ошибка не читает свойство text */ }
-{/* <Track tracks = {{
-            text: 'Knives n Cherries',
-            author: 'minthaze',
-            album: 'Captivating',
-            time: '1:48'
-          }}/> */}
-
-{/* function Track({tracks}){
-  return (
-    <div className="playlist__item">
-    <div className="playlist__track track">
-      <div className="track__title">
-        <div className="track__title-image">
-          <svg className="track__title-svg" alt="music">
-            <use xlinkHref="../img/icon/sprite.svg#icon-note"></use>
-          </svg>
-        </div>
-        <div className="track__title-text">
-          <a className="track__title-link" href="#">{tracks.text}
-          <span className="track__title-span"></span
-          ></a>
-        </div>
-      </div>
-      <div className="track__author">
-        <a className="track__author-link" href="#">{tracks.author}</a>
-      </div>
-      <div className="track__album">
-        <a className="track__album-link" href="#"
-          >{tracks.album}</a
-        >
-      </div>
-      <div className="track__time">
-        <svg className="track__time-svg" alt="time">
-          <use xlinkHref="../img/icon/sprite.svg#icon-like"></use>
-        </svg>
-        <span className="track__time-text">{tracks.time}</span>
-      </div>
-    </div>
-  </div>
-  )
-}
-  */}

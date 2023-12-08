@@ -5,10 +5,9 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css'
 import './SiderBar.css'
 
+//правчасть
+
 function SiderBar(props){
-
-//  const test='LOADING...'
-
     return(
         <div className="main__sidebar sidebar">
        <SiderBarPersonal/>
