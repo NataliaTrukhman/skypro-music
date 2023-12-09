@@ -32,16 +32,15 @@ export const NavBurger = styled.div`
     -ms-flex-pack: justify;
     justify-content: space-between;
 `
-export const NavMenuBurger = styled.div`
-        display: block;
-        visibility: visible;
-`
-
 export const BurgerLine = styled.span`   
     display: inline - block;
     width: 100 %;
     height: 1px;
     background - color: #d3d3d3;
+`
+export const NavMenuBurger = styled.div`
+        display: block;
+        visibility: visible;
 `
 export const MenuList = styled.ul`    
    padding: 18px 0 10px 0;

@@ -1,29 +1,30 @@
 import React from 'react';
 import { useState } from 'react';
-import './NavMenu.css'
+import * as S from './NavMenuStyles'
+// import './NavMenu.css'
 
 
-const NavMenu = (props) =>{
+const NavMenu = (props) => {
   const [menuBurger,setMenuBurger]= useState(false);
   function menuBurgerClick(){
     setMenuBurger(!menuBurger)
 }
     return(
-<nav className="main__nav nav">
-    <div className="nav__logo logo">
-        <img className="logo__image" src="../img/logo.png" alt="logo" />
-    </div>
+<S.MainNav>
+    <S.NavLogo>
+        <S.LogoImage src="../img/logo.png" alt="logo" />
+    </S.NavLogo>
         {/* BurgerMenu клик по меню*/}
-    <div className="nav__burger burger"  onClick={menuBurgerClick}>
-        <span className="burger__line"></span>
-        <span className="burger__line"></span>
-        <span className="burger__line"></span>
-    </div>
+    <S.NavBurger onClick={menuBurgerClick}>
+        <S.BurgerLine></S.BurgerLine>
+        <S.BurgerLine></S.BurgerLine>
+        <S.BurgerLine></S.BurgerLine>
+    </S.NavBurger>
     {/*  тут меняет состоение*/} 
     {
       menuBurger && <MenuBurger />
      }
-</nav>
+</S.MainNav>
       );
 }
 export default NavMenu
@@ -32,18 +33,18 @@ export default NavMenu
 
 function MenuBurger(){
     return(
-        <div className="nav__menu menu">
-        <ul className="menu__list">
-          <li className="menu__item">
-            <a href="#" className="menu__link">Главное</a>
-          </li>
-          <li className="menu__item">
-            <a href="#" className="menu__link">Мой плейлист</a>
-          </li>
-          <li className="menu__item">
-            <a href="../signin.html" className="menu__link">Войти</a>
-          </li>
-        </ul>
-      </div>
+        <S.NavMenuBurger>
+        <S.MenuList>
+          <S.MenuItem>
+            <S.MenuLink href="#">Главное</S.MenuLink>
+          </S.MenuItem>
+          <S.MenuItem>
+            <S.MenuLink href="#">Мой плейлист</S.MenuLink>
+          </S.MenuItem>
+          <S.MenuItem>
+            <S.MenuLink href="../signin.html">Войти</S.MenuLink>
+          </S.MenuItem>
+        </S.MenuList>
+      </S.NavMenuBurger>
     )
 };
