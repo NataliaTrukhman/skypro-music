@@ -33,10 +33,11 @@ export const NavBurger = styled.div`
     justify-content: space-between;
 `
 export const BurgerLine = styled.span`   
-    display: inline - block;
-    width: 100 %;
+    display: inline-block;
+    background-color: #d3d3d3;
+    width: 100%;
     height: 1px;
-    background - color: #d3d3d3;
+    
 `
 export const NavMenuBurger = styled.div`
         display: block;
@@ -47,11 +48,11 @@ export const MenuList = styled.ul`
 `
 export const MenuItem = styled.li`       
     padding: 5px 0;
-    margin - bottom: 16px;
+    margin-bottom: 16px;
 `
 export const MenuLink = styled.a`     
     color: #ffffff;
-    font - weight: 400;
-    font - size: 16px;
-    line - height: 24px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
 `
