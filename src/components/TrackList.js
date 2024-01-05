@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css'
+import * as S from './TrackListStyles'
 import './TrackList.css'
 import FilterBlocks from "./TrackListFilterBlocks";
 
@@ -15,41 +16,35 @@ function TrackList() {
     return () => clearTimeout(timer);
   }, []);
   return (
-    <div className="main__centerblock centerblock">
-      <div className="centerblock__search search">
-        <svg className="search__svg">
+    <S.MainCenterblock>
+      <S.MainCenterblockSearch>
+        <S.SearchSvg>
           <use xlinkHref="./img/icon/sprite.svg#icon-search"></use>
-        </svg>
-        <input
-          className="search__text"
-          type="search"
-          placeholder="Поиск"
-          name="search"
-        />
-      </div>
-      <h2 className="centerblock__h2">Треки</h2>
-      <div className="centerblock__filter filter">
-        <div className="filter__title">Искать по:</div>
+        </S.SearchSvg>
+        <S.SearchTextInput type="search" placeholder="Поиск" name="search" />
+      </S.MainCenterblockSearch>
+      <S.CenterblockHeading>Треки</S.CenterblockHeading>
+      <S.CenterblockFilter>
+        <S.FilterTitle>Искать по:</S.FilterTitle>
         <FilterBlocks />
-      </div>
-
-      <div className="centerblock__content">
-        <div className="content__title playlist-title">
-          <div className="playlist-title__col col01">Трек</div>
-          <div className="playlist-title__col col02">ИСПОЛНИТЕЛЬ</div>
-          <div className="playlist-title__col col03">АЛЬБОМ</div>
-          <div className="playlist-title__col col04">
-            <svg className="playlist-title__svg" alt="time">
+      </S.CenterblockFilter>
+      <S.CenterblockContent>
+        <S.ContentTitle>
+          <S.PlaylistTitleTrack>Трек</S.PlaylistTitleTrack>
+          <S.PlaylistAuthor>ИСПОЛНИТЕЛЬ</S.PlaylistAuthor>
+          <S.PlaylistAlbum>АЛЬБОМ</S.PlaylistAlbum>
+          <S.PlaylistTitleTime>
+            <S.PlaylistTitleSvg alt="time">
               <use xlinkHref="./img/icon/sprite.svg#icon-watch"></use>
-            </svg>
-          </div>
-        </div>
-        <div className="content__playlist playlist">
+            </S.PlaylistTitleSvg>
+          </S.PlaylistTitleTime>
+        </S.ContentTitle>
+        <S.ContentPlaylist>
           <Track isLoading={isLoading} name={"Guilt"} />
           <Track isLoading={isLoading} name={"Knives n Cherries"} />
           <Track isLoading={isLoading} name={"Knives n Cherries"} />
           <Track isLoading={isLoading} name={"Knives n Cherries"} />
-          
+
           {isLoading ? (
             <SkeletonTheme baseColor="#202020" highlightColor="#444">
               <div className="playlist__item">
@@ -64,9 +59,9 @@ function TrackList() {
             </SkeletonTheme>
           ) : (
             <Track name={"Knives n Cherries"} />)}
-        </div>
-      </div>
-    </div>
+        </S.ContentPlaylist>
+      </S.CenterblockContent>
+    </S.MainCenterblock>
   )
 }
 
@@ -109,10 +104,14 @@ function Track({ isLoading, name }) {
 
           </div>
           <div className="track__time">
-            <svg className="track__time-svg" alt="time">
-              <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
-            </svg>
+          {isLoading ? (<Skeleton width={20} height={30} />
+            ) : ( <><svg className="track__time-svg" alt="time">
+            <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
             <span className="track__time-text">1:48</span>
+          </svg>
+          </>)}
+          
+         
           </div>
         </div>
       </div>
